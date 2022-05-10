@@ -1,5 +1,5 @@
 public class Dime extends Money{
-    new Dime() {
+    public Dime() {
         super(0.10);
     }
 }

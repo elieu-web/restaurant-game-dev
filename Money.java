@@ -11,7 +11,7 @@ public abstract class Money {
         cost = val;
     }
 
-    public getCost() {
+    public double getCost() {
         return cost;
     }
 }
