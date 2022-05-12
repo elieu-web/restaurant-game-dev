@@ -1,12 +1,17 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Graphics;
-import javax.swing.JPanel;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
 
 public class Restaurant{
+    private static final int WIDTH = 500;
+    private static final int HEIGHT = 400;
     private JFrame frame;
     private JPanel panel;
     public static void main(String[] args) {
@@ -21,18 +26,28 @@ public class Restaurant{
         }
         frame = new JFrame("Restaurant Game");
         panel = new JPanel();
-        JLabel label = new JLabel("Welcome!!!");
+        JTextField text = new JTextField("Welcome! Type how many pizzas: ");
         JButton button = new JButton("WELCOME");
-        panel.add(label);
+        button.addActionListener(new MyActionListener());
         panel.add(button);
+        panel.add(text);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         panel.setBackground(Color.GRAY);
+        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setSize(300, 400);
-        panel.setSize(300, 400);
         frame.setVisible(true);
 		frame.add(panel);
-        //frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.pack();
     }
+
+    public class MyActionListener implements ActionListener{
+        public void ActionPerformed(ActionEvent e) {
+            JFrame f = new JFrame();
+            f.setVisible(true);
+            f.setBackground(Color.green);
+            f.setSize(200, 200);
+        }    
+    }
+   
 }
