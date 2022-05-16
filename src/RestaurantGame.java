@@ -1,3 +1,4 @@
+package src;
 import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -7,7 +8,7 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.DimensionUIResource;
 import javax.swing.plaf.FontUIResource;
 
-public class Restaurant{
+public class RestaurantGame{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     private JFrame frame;
@@ -16,13 +17,12 @@ public class Restaurant{
     private JLabel label;
     private JButton button;
     public static void main(String[] args) {
-		new Restaurant().start();
+		new RestaurantGame().start();
 	}
 
     public void start(){
-        try {
-            System.out.println("WORKS!");
-        } catch (Exception e) {
+        try {}
+        catch (Exception e) {
             System.out.println("ERROR!!!");
         }
         GridLayout gl = new GridLayout(2,0);
@@ -50,19 +50,46 @@ public class Restaurant{
 
     public class MyActionListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            Font helvetica = new FontUIResource("Helvetica", Font.PLAIN, 20);
             JTextField text = new JTextField("Welcome! Type how many pizzas: ");
-            text.setBounds(50,50,200,200);
+            GridLayout gl2 = new GridLayout(1,0);
             panel.removeAll();
             panel.add(text);
+            panel.setLayout(gl2);
             panel.revalidate();
             panel.repaint();
-            GridLayout gl2 = new GridLayout(1,2);
+            panel2.removeAll();
+            GridLayout gl = new GridLayout(1,3);
             panel2.setLayout(gl2);
-            JButton b2 = new JButton("NEW");
-            b2.setFont(helvetica);
+            JButton b2 = new JButton("HOME");
+            b2.addActionListener(new HomePanel());
+            JButton b3 = new JButton("PREVIOUS");
+            button = new JButton("NEXT");
             panel2.add(b2);
+            panel2.add(b3);
+            panel2.add(button);
+            panel2.revalidate();
+            panel2.repaint();
         }    
+
+    public class HomePanel implements ActionListener {
+            public void actionPerformed(ActionEvent e) {
+                panel.removeAll();
+                label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
+                Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
+                button = new JButton("NEXT");
+                button.addActionListener(new MyActionListener());
+                label.setFont(helvetica);
+                panel.add(label);
+                panel.setBackground(new ColorUIResource(255,255,102));
+                panel.revalidate();
+                panel.repaint();
+                panel2.removeAll();
+                panel2.add(button);
+                panel2.revalidate();
+                panel2.repaint();
+            }
+   }
+        
     }
    
 }
