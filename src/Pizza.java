@@ -1,3 +1,4 @@
+package src;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.*;
@@ -18,13 +19,13 @@ import java.io.File;
 public class Pizza {
     private static final int WIDTH = 1000;
     private static final int HEIGHT = 1000;
-    private JFrame f;
-    private JPanel p;
-    public static void main(String[] args) {
-		new Pizza().makePizza();
-	}
+    private static JFrame f;
+    private static JPanel p;
+    // public static void main(String[] args) {
+	// 	new Pizza().makePizza();
+	// }
 
-    public void makePizza(){
+    public static void makePizza(){
         f = new JFrame("Start Making Pizza");
         p = new JPanel();
         JTextField text = new JTextField("Click on the circle toppings to place on the pizza! ");
@@ -39,7 +40,6 @@ public class Pizza {
         JLabel picLabel = new JLabel(new ImageIcon("images/pizza.png"));
         p.add(picLabel);
         p.add(button);
-
         p.add(button1);
         p.add(button2);
         p.add(button3);

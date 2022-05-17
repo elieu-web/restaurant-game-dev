@@ -3,11 +3,8 @@ import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.ActionMapUIResource;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.DimensionUIResource;
-import javax.swing.plaf.FontUIResource;
 
 public class RestaurantGame{
     private static final int WIDTH = 500;
@@ -74,6 +71,7 @@ public class RestaurantGame{
             b3.addActionListener(new HomePanel());
             button = new JButton("NEXT");
             panel2.add(b2);
+            button.addActionListener(new PizzaPanel());
             panel2.add(b3);
             panel2.add(button);
             panel2.revalidate();
@@ -139,6 +137,12 @@ public class RestaurantGame{
         public void actionPerformed(ActionEvent e) {
             JOptionPane jop = new JOptionPane();
             jop.showMessageDialog(null, "No questions found to go back to", "error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public class PizzaPanel implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Pizza.makePizza();
         }
     }
 
