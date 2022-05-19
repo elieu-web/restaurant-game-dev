@@ -75,7 +75,7 @@ public class RestaurantGame{
             b3.addActionListener(new HomePanel());
             button = new JButton("NEXT");
             panel2.add(b2);
-            button.addActionListener(new PizzaPanel());
+            //button.addActionListener(new PizzaPanel());
             panel2.add(b3);
             panel2.add(button);
             panel2.revalidate();
