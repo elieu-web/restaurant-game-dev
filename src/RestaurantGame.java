@@ -32,7 +32,8 @@ public class RestaurantGame{
         GridLayout gl = new GridLayout(2,0);
         frame = new JFrame("Restaurant Game");
         panel = new JPanel();
-        button = new JButton("NEXT");
+        button = new JButton("MONEY MODE");
+        JButton button2 = new JButton("PIZZA MODE");
         label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
         panel2 = new JPanel();
         frame.setVisible(true);
@@ -40,9 +41,12 @@ public class RestaurantGame{
         label.setFont(helvetica);
         button.setFont(helvetica);
         button.addActionListener(new MyActionListener());
+        button2.setFont(helvetica);
+        button2.addActionListener(new PizzaPanel());
         frame.setLayout(gl);
         panel.add(label);
         panel2.add(button);
+        panel2.add(button2);
 		frame.add(panel);
         panel.setBackground(new ColorUIResource(255,255,102));
         frame.add(panel2);
@@ -84,7 +88,7 @@ public class RestaurantGame{
                 panel.removeAll();
                 label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
                 Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
-                button = new JButton("NEXT");
+                button = new JButton("MONEY MODE");
                 button.addActionListener(new MyActionListener());
                 label.setFont(helvetica);
                 panel.add(label);
