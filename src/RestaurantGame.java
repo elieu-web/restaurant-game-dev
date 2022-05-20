@@ -10,8 +10,8 @@ public class RestaurantGame{
     private static final int HEIGHT = 400;
     private Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
     private JFrame frame = new JFrame("Restaurant Game");
-    private JPanel panel;
-    private JPanel panel2;
+    private JPanel panel = new JPanel();
+    private JPanel panel2 = new JPanel();
     private JTextField text;
     private JLabel label;
     private JButton button;
@@ -28,11 +28,9 @@ public class RestaurantGame{
      }
 
     private void draw() {
-        panel = new JPanel();
         button = new JButton("MONEY MODE");
         JButton button2 = new JButton("PIZZA MODE");
         label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
-        panel2 = new JPanel();
         GridLayout gl = new GridLayout(2,0);
         frame.setLayout(gl);
         frame.setVisible(true);
