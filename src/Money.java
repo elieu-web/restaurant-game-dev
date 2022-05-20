@@ -6,39 +6,21 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import java.awt.Dimension;
-import java.swingImageIcon; 
-
+import javax.swing.ImageIcon; 
+import javax.swing.JButton;
 import javax.swing.JPanel;  
+import java.awt.GridBagLayout;
+import java.awt.event.*;
 
 
-public abstract class Money {
-
-    // JFrame f = new JFrame(); //creates jframe f
-
-    // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //this is your screen size
-
-    // f.setUndecorated(true); //removes the surrounding border
-
-    // ImageIcon image = new ImageIcon("IMAGEURL.jpg"); //imports the image
-
-    // JLabel lbl = new JLabel(image); //puts the image into a jlabel
-
-    // f.getContentPane().add(lbl); //puts label inside the jframe
-
-    // f.setSize(image.getIconWidth(), image.getIconHeight()); //gets h and w of image and sets jframe to the size
-
-    // int x = (screenSize.width - f.getSize().width)/2; //These two lines are the dimensions
-    // int y = (screenSize.height - f.getSize().height)/2;//of the center of the screen
-
-    // f.setLocation(x, y); //sets the location of the jframe
-    // f.setVisible(true); //makes the jframe visible
-    
-
-
+public class Money {
+    private static final int WIDTH = 500;
+    private static final int HEIGHT = 400;
     private int points; 
-
     private double cost;
-
+    private int tryNumber = 0;
+    private static JFrame f;
+    private static JPanel p;
 
     public Money() {
         cost = 0.0;
@@ -52,42 +34,87 @@ public abstract class Money {
         return cost;
     }
 
-   
+    public JPanel chooseOptions() {
+        f = new JFrame("Money Game");
+        p = new JPanel(new GridBagLayout());
 
+        int option1 = ((int)Math.random() * 11) + (int)cost;
+        int option2 = ((int)Math.random() * 11) + (int)cost;
+        int option3 = ((int)cost) + 1;
 
-    
-    public void roundUp(double amount){
+        JButton button = new JButton(Integer.toString(option1));
+        button.setActionCommand("button1");
+        JButton button2 = new JButton(Integer.toString(option2));
+        button2.setActionCommand("button2");
+        JButton button3 = new JButton(Integer.toString(option3));
+        button3.setActionCommand("button3");
+        button.addActionListener(new Selection());
+        button2.addActionListener(new Selection());
+        button3.addActionListener(new Selection());
 
-        int option1 = ((int)Math.random() * 11) + (int)amount;
-        int option2 = ((int)Math.random() * 11) + (int)amount;
-        int option3 = ((int)amount) + 1;
-
-        button = new JButton(option1);
-        button2 = new JButton(option2);
-        button3 = new JButton(option3);
-
-        // System.out.print(option1);
-        // System.out.print(option2);
-        // System.out.print(option3);
-        // System.out.print(option3 + " is the correct answer!");
+        p.add(button);
+        p.add(button2);
+        p.add(button3);
+        p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        f.setSize(200, 200);
+        f.setVisible(true);
+        f.add(p);
+        f.setLocationRelativeTo(null);
+        f.pack(); 
+        return p;
     }
 
-    public void selection {
-        if (user selects button) {
-            points += 100;
-        } 
-        while (user selects button2 || button3) {
-            System.out.println ("try again"); 
-            if (user selects option 3) {
-                points += 50; 
+    public class Selection implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            tryNumber += 1;
+            if (tryNumber == 1 && e.getActionCommand().equals("button3")) {
+                points += 100;
+            } else if (e.getActionCommand().equals("button3")) {
+                points += 50;
+            } else {
+                System.out.println ("try again"); 
             }
-        }
-    
-        if (points == 200) {
-            ImageIcon winMeme = new ImageIcon ("WinMeme.png");
-            points -= 200; 
+
+            if (points >= 200) {
+                ImageIcon winMeme = new ImageIcon ("WinMeme.png");
+                points -= 200;
+                // maybe set new correct option / cost here
+            }
+            // JButton button = new JButton(resizeImage("_____ ", 50, 50));
+            // button.setPreferredSize(new DimensionUIResource(50, 50));
+            // JLabel button2 = new JLabel(resizeImage(" ", 50, 50));
+            // button2.setPreferredSize(new DimensionUIResource(50, 50));
+            // JLabel button3 = new JLabel(resizeImage(" ", 50, 50));
+            // button3.setPreferredSize(new DimensionUIResource(50, 50));
+            // //  Setting location
+            // button.setLocation(100, 100);
+            // button2.setLocation(150, 200);
+            // button3.setLocation(200, 300);
+            // p.add(button);
+            // p.add(button2);
+            // p.add(button3);
+            // p.revalidate();
+            // p.repaint();
+            
+
+
         }
     }
 
-    
+    public static void payMoney() {
+
+        // JLabel picLabel = new JLabel(new ImageIcon("__"));
+
+        // JButton button = new JButton(resizeImage("images/ten-dollar.png", 100, 100));
+        // button.setPreferredSize(new DimensionUIResource(100, 100));
+        // JButton button1 = new JButton(resizeImage("images/five-dollar.png", 100, 100));
+        // button1.setPreferredSize(new DimensionUIResource(100, 100));
+        // JButton button2 = new JButton(resizeImage("images/yellow_bellpepper.jpeg", 100, 100));
+        // button2.setPreferredSize(new DimensionUIResource(100, 100));
+        // JButton button3 = new JButton(resizeImage("images/brocoli.png", 100, 100));
+        // button3.setPreferredSize(new DimensionUIResource(100, 100));
+
+    }
+
+    //add next button 
 }
