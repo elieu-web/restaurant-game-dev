@@ -2,9 +2,6 @@ package src;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Graphics;
 import java.awt.event.*;
 import javax.swing.*;
@@ -14,8 +11,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import java.awt.GridBagLayout;
 
 
@@ -61,7 +56,7 @@ public class Pizza {
         p.add(button2);
         p.add(button3);
         p.add(text);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         p.setBackground(Color.WHITE);
         f.setSize(200, 200);
         f.setVisible(true);

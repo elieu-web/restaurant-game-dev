@@ -1,5 +1,4 @@
 package src;
-import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -9,13 +8,13 @@ import javax.swing.plaf.DimensionUIResource;
 public class RestaurantGame{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
-    private JFrame frame;
+    private Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
+    private JFrame frame = new JFrame("Restaurant Game");
     private JPanel panel;
     private JPanel panel2;
     private JTextField text;
     private JLabel label;
     private JButton button;
-    private ArrayList<JFrame> frameList;
     public static void main(String[] args) {
 		new RestaurantGame().start();
 	}
@@ -29,40 +28,39 @@ public class RestaurantGame{
      }
 
     private void draw() {
-        GridLayout gl = new GridLayout(2,0);
-        frame = new JFrame("Restaurant Game");
         panel = new JPanel();
         button = new JButton("MONEY MODE");
         JButton button2 = new JButton("PIZZA MODE");
         label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
         panel2 = new JPanel();
+        GridLayout gl = new GridLayout(2,0);
+        frame.setLayout(gl);
         frame.setVisible(true);
-        Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
         label.setFont(helvetica);
         button.setFont(helvetica);
         button.addActionListener(new MyActionListener());
         button2.setFont(helvetica);
         button2.addActionListener(new PizzaPanel());
-        frame.setLayout(gl);
         panel.add(label);
         panel2.add(button);
         panel2.add(button2);
 		frame.add(panel);
         panel.setBackground(new ColorUIResource(255,255,102));
         frame.add(panel2);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
-        frame.setLocationRelativeTo(null);
         frame.pack();
+        frame.setLocationRelativeTo(null);
     }
 
     public class MyActionListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            text = new JTextField("Welcome! Type how many pizzas: ",2);
+            label = new JLabel("Round up the price of " + 14.35, SwingConstants.CENTER);
+            label.setFont(helvetica);
             GridLayout gl2 = new GridLayout(1,0);
-            text.addKeyListener(new MyKeyListener());
+            //text.addKeyListener(new MyKeyListener());
             panel.removeAll();
-            panel.add(text);
+            panel.add(label);
             panel.setLayout(gl2);
             panel.revalidate();
             panel.repaint();
@@ -86,19 +84,14 @@ public class RestaurantGame{
     public class HomePanel implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 panel.removeAll();
-                label = new JLabel("Welcome to Restaurant Game!", SwingConstants.CENTER);
-                Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
-                button = new JButton("MONEY MODE");
-                button.addActionListener(new MyActionListener());
-                label.setFont(helvetica);
-                panel.add(label);
-                panel.setBackground(new ColorUIResource(255,255,102));
+                panel2.removeAll();
+                draw();
                 panel.revalidate();
                 panel.repaint();
-                panel2.removeAll();
-                panel2.add(button);
                 panel2.revalidate();
                 panel2.repaint();
+                frame.revalidate();
+                frame.repaint();
             }
         }
 
@@ -139,8 +132,7 @@ public class RestaurantGame{
 
     public class QuestionPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            JOptionPane jop = new JOptionPane();
-            jop.showMessageDialog(null, "No questions found to go back to", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No questions found to go back to", "error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
