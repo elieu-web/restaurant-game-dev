@@ -1,14 +1,5 @@
-<<<<<<< HEAD
 package src;
-import javax.swing.*;
-import java.awt.Dimension;
-import javax.swing.ImageIcon; 
-import javax.swing.JButton;
-import javax.swing.JPanel;  
-import java.awt.GridBagLayout;
-=======
 import java.util.*;
->>>>>>> 3c23570edddd9e4ead4f932997f8f1bd83bb6190
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -21,39 +12,24 @@ public class Money {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     private static JFrame f;
-<<<<<<< HEAD
-    private static JPanel p;
-
-    public Money() {
-        cost = 0.0;
-    }
-
-    public Money(double val) {
-        cost = val;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public JPanel chooseOptions() {
-        f = new JFrame("Money Game");
-        p = new JPanel(new GridBagLayout());
-
-        int option1 = ((int)Math.random() * 11) + (int)cost;
-        int option2 = ((int)Math.random() * 11) + (int)cost;
-        int option3 = ((int)cost) + 1;
-=======
     private static JTextField text;
     private static JLabel questionLabel;
     private static JPanel activePanel;
+    private double db;
+
+    public Money (double db2) {
+        db = db2;
+    }
+
+    public Money () {
+        db = 0.00;
+    }
 
     public static JPanel makeOptionPanel(double cost) {
         JPanel p = new JPanel(new GridBagLayout());
         int option1 = (int)cost + (int) (Math.random() * 5);
         int option2 = (int)cost - (int) (Math.random() * 5);
         int option3 = ((int)cost) + 1; //fix
->>>>>>> 3c23570edddd9e4ead4f932997f8f1bd83bb6190
 
         JButton button = new JButton(Integer.toString(option1));
         button.setActionCommand("button1");

@@ -1,4 +1,4 @@
-//package src;
+package src;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -53,34 +53,6 @@ public class RestaurantGame{
 
     public class MoneyPanel implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-            label = new JLabel("Round up the price of " + 14.35, SwingConstants.CENTER);
-            label.setFont(helvetica);
-            GridLayout gl2 = new GridLayout(2,1);
-            //text.addKeyListener(new MyKeyListener());
-            BufferedImage dime = ImageIO.read(new File("dime.jpg"));
-            JLabel d = new JLabel(dime);
-            panel.removeAll();
-            panel.add(label);
-            panel.add(d);
-            panel.setLayout(gl2);
-            panel.revalidate();
-            panel.repaint();
-            panel2.removeAll();
-            GridLayout gl = new GridLayout(1,3);
-            panel2.setLayout(gl);
-            JButton b2 = new JButton("PREVIOUS");
-            JButton b3 = new JButton("HOME");
-            b2.addActionListener(new QuestionPanel());
-            b3.addActionListener(new HomePanel());
-            button = new JButton("NEXT");
-            panel2.add(b2);
-            //button.addActionListener(new PizzaPanel());
-            panel2.add(b3);
-            panel2.add(button);
-            panel2.revalidate();
-            panel2.repaint();
-=======
             Money.chooseOptions();
             // label = new JLabel("Round up the price of " + 14.35, SwingConstants.CENTER);
             // label.setFont(helvetica);
@@ -105,7 +77,6 @@ public class RestaurantGame{
             // panel2.add(button);
             // panel2.revalidate();
             // panel2.repaint();
->>>>>>> 3c23570edddd9e4ead4f932997f8f1bd83bb6190
         }  
     }  
 
@@ -167,7 +138,7 @@ public class RestaurantGame{
     public static class PizzaPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             panel.removeAll();
-            panel2.removeAll();      
+            //panel2.removeAll();      
             Pizza.makePizza();
         }
     }
