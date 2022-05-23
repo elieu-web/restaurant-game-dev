@@ -9,8 +9,8 @@ public class RestaurantGame{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     private Font helvetica = new Font("Helvetica", Font.PLAIN, 30);
-    private JFrame frame = new JFrame("Restaurant Game");
-    private JPanel panel = new JPanel();
+    protected static JFrame frame = new JFrame("Restaurant Game");
+    protected static JPanel panel = new JPanel();
     private JPanel panel2 = new JPanel();
     private JTextField text;
     private JLabel label;
@@ -55,10 +55,13 @@ public class RestaurantGame{
         public void actionPerformed(ActionEvent e) {
             label = new JLabel("Round up the price of " + 14.35, SwingConstants.CENTER);
             label.setFont(helvetica);
-            GridLayout gl2 = new GridLayout(1,0);
+            GridLayout gl2 = new GridLayout(2,1);
             //text.addKeyListener(new MyKeyListener());
+            BufferedImage dime = ImageIO.read(new File("dime.jpg"));
+            JLabel d = new JLabel(dime);
             panel.removeAll();
             panel.add(label);
+            panel.add(d);
             panel.setLayout(gl2);
             panel.revalidate();
             panel.repaint();
@@ -136,6 +139,8 @@ public class RestaurantGame{
 
     public class PizzaPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            panel.removeAll();
+            panel2.removeAll();      
             Pizza.makePizza();
         }
     }

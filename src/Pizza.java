@@ -8,17 +8,16 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.plaf.DimensionUIResource;
 import java.awt.Image;
+import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.awt.GridBagLayout;
 
 
-public class Pizza {
+public class Pizza extends RestaurantGame {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
-    private static JFrame f;
-    private static JPanel p;
    
 
     public static JPanel createOverlayPanel(JComponent child) {
@@ -38,10 +37,9 @@ public class Pizza {
 
     public static void makePizza() {
         JLabel picLabel = new JLabel(new ImageIcon("images/pizza.png"));
-        f = new JFrame("Start Making Pizza");
-        // p = new JPanel();
-        p = createOverlayPanel(picLabel);
-        JTextField text = new JTextField("Click on the circle toppings to place on the pizza! ");
+        //p = new JPanel();
+        panel = createOverlayPanel(picLabel);
+        JLabel text = new JLabel("Click on the circle toppings to place on the pizza! ");
         JButton button = new JButton(resizeImage("images/olives.png", 100, 100));
         button.setPreferredSize(new DimensionUIResource(100, 100));
         JButton button1 = new JButton(resizeImage("images/new_tomato.png", 100, 100));
@@ -50,20 +48,19 @@ public class Pizza {
         button2.setPreferredSize(new DimensionUIResource(100, 100));
         JButton button3 = new JButton(resizeImage("images/brocoli.png", 100, 100));
         button3.setPreferredSize(new DimensionUIResource(100, 100));
-        p.add(picLabel);
-        p.add(button);
-        p.add(button1);
-        p.add(button2);
-        p.add(button3);
-        p.add(text);
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        p.setBackground(Color.WHITE);
-        f.setSize(200, 200);
-        f.setVisible(true);
-		f.add(p);
-        p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        f.setLocationRelativeTo(null);
-        f.pack(); 
+        panel.add(picLabel);
+        panel.add(button);
+        panel.add(button1);
+        panel.add(button2);
+        panel.add(button3);
+        panel.add(text);
+        //f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+         panel.setBackground(Color.WHITE);
+        // f.setSize(200, 200);
+        // f.setVisible(true);
+		frame.add(panel);
+        // f.setLocationRelativeTo(null);
+        frame.pack(); 
         button.addActionListener(new Pizza().new PlaceOlive());
         button1.addActionListener(new Pizza().new PlaceTomato());
         button2.addActionListener(new Pizza().new PlaceBP());
@@ -82,11 +79,11 @@ public class Pizza {
             oliveLabel1.setLocation(100, 100);
             oliveLabel2.setLocation(150, 200);
             oliveLabel3.setLocation(200, 300);
-            p.add(oliveLabel1);
-            p.add(oliveLabel2);
-            p.add(oliveLabel3);
-            p.revalidate();
-            p.repaint();
+            panel.add(oliveLabel1);
+            panel.add(oliveLabel2);
+            panel.add(oliveLabel3);
+            panel.revalidate();
+            panel.repaint();
         }
     }
 
@@ -99,10 +96,10 @@ public class Pizza {
             //  Setting location
             tomatoLabel1.setLocation(100, 100);
             tomatoLabel2.setLocation(150, 200);
-            p.add(tomatoLabel1);
-            p.add(tomatoLabel2);
-            p.revalidate();
-            p.repaint();
+            panel.add(tomatoLabel1);
+            panel.add(tomatoLabel2);
+            panel.revalidate();
+            panel.repaint();
         }
     }
 
@@ -118,11 +115,11 @@ public class Pizza {
             BPLabel1.setLocation(100, 100);
             BPLabel2.setLocation(150, 200);
             BPLabel3.setLocation(200,300);
-            p.add(BPLabel1);
-            p.add(BPLabel2);
-            p.add(BPLabel3);
-            p.revalidate();
-            p.repaint();
+            panel.add(BPLabel1);
+            panel.add(BPLabel2);
+            panel.add(BPLabel3);
+            panel.revalidate();
+            panel.repaint();
         }
     }
 
@@ -135,10 +132,10 @@ public class Pizza {
             //  Setting location
             brocoliLabel1.setLocation(100, 100);
             brocoliLabel2.setLocation(150, 200);
-            p.add(brocoliLabel1);
-            p.add(brocoliLabel2);
-            p.revalidate();
-            p.repaint();
+            panel.add(brocoliLabel1);
+            panel.add(brocoliLabel2);
+            panel.revalidate();
+            panel.repaint();
         }
     }
 }
