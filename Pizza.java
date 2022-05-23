@@ -9,7 +9,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.plaf.DimensionUIResource;
-
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -39,6 +38,7 @@ public class Pizza {
         JLabel picLabel = new JLabel(new ImageIcon("images/pizza.png"));
         p.add(picLabel);
         p.add(button);
+
         p.add(button1);
         p.add(button2);
         p.add(button3);
