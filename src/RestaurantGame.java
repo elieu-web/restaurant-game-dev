@@ -140,6 +140,8 @@ public class RestaurantGame{
             panel.removeAll();
             //panel2.removeAll();      
             Pizza.makePizza();
+            panel.revalidate();
+            panel.repaint();
         }
     }
 
