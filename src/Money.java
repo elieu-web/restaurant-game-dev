@@ -116,8 +116,8 @@ public class Money {
                 activePanel = makeQuestionPanel();
                 GridLayout gl = new GridLayout(1,0);
                 newFrame.setLayout(gl);
-                JPanel winPanel = Pizza.createOverlayPanel(winLabel);
-                winPanel.add(winLabel);
+                // JPanel winPanel = Pizza.createOverlayPanel(winLabel);
+                // winPanel.add(winLabel);
                 newFrame.setSize(200, 200);
                 newFrame.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
                 newFrame.setVisible(true);
@@ -155,7 +155,7 @@ public class Money {
                 String s = text.getText();
                 try {
                     Double i = Double.parseDouble(s);
-                    questionLabel = new JLabel("Round up the price of " + Calculator.getPrice(i),SwingConstants.CENTER);
+                    questionLabel = new JLabel("Dollar up the price of " + Calculator.getPrice(i),SwingConstants.CENTER);
                     JPanel questionPanel = new JPanel();
                     questionPanel.add(questionLabel);
                     activePanel = makeOptionPanel(i * 15.25);
