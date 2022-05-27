@@ -1,21 +1,8 @@
 package src;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.util.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.plaf.DimensionUIResource;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JLayeredPane;
 
 public class Pizza {
     private static final int WIDTH = 500;
@@ -44,9 +31,9 @@ public class Pizza {
         return button;
     }
 
-    public static void makePizza() {
+    public static Component makePizza() {
         JLabel picLabel = new JLabel(new ImageIcon("images/pizza.png"));
-        f = new JFrame("Start Making Pizza");
+       // f = new JFrame("Start Making Pizza");
         // lf = new JFrame("Layered Frame");
         // lp = new JLayeredPane();
         p = new JPanel();
@@ -62,14 +49,13 @@ public class Pizza {
         p.add(brocolli);
         p.add(text);
 
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        //f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         p.setBackground(Color.WHITE);
-        f.setSize(200, 200);
-        f.setVisible(true);
-		f.add(p);
+        //f.setSize(200, 200);
+       // f.setVisible(true);
+		//f.add(p);
         p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        f.pack(); 
-
+       // f.pack(); 
 
         // lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // lf.setSize(520, 530);
@@ -114,6 +100,7 @@ public class Pizza {
         tomato.addActionListener(new Pizza().new PlaceTomato());
         pepper.addActionListener(new Pizza().new PlaceBP());
         brocolli.addActionListener(new Pizza().new PlaceBrocoli());
+        return p;
     }
 
     public class PlaceOlive implements ActionListener {

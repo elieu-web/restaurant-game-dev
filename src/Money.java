@@ -1,5 +1,4 @@
 package src;
-import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -8,7 +7,7 @@ import javax.swing.plaf.DimensionUIResource;
 import java.awt.GridBagLayout;
 
 
-public class Money {
+public class Money extends RestaurantGamePaint{
     private static final int WIDTH = 500;
     private static final int HEIGHT = 400;
     private static JFrame f;
@@ -68,7 +67,7 @@ public class Money {
         b2.addActionListener(new Money().new QuestionPanel());
         // b3.addActionListener(new HomePanel());
         p.add(b2);
-        button.addActionListener(new RestaurantGame.PizzaPanel());
+        //button.addActionListener(new RestaurantGamePaint.PizzaPanel());
         p.add(b3);
         p.add(button);
 
@@ -82,17 +81,18 @@ public class Money {
     //     f.repaint();
     // }
 
-    public static void chooseOptions() {
-        f = new JFrame("Money Game");
+    public static Component chooseOptions() {
+        JPanel p = new JPanel(); 
         activePanel = makeQuestionPanel();
         GridLayout gl = new GridLayout(3,0);
-        f.setLayout(gl);
-        f.add(activePanel);
-        f.setSize(200, 200);
-        f.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
-        f.setVisible(true);
-        f.setLocationRelativeTo(null);
-        f.pack(); 
+        p.setLayout(gl);
+        p.add(activePanel);
+        p.setSize(200, 200);
+        p.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
+        // p.setVisible(true);
+        // p.setLocationRelativeTo(null);
+        // p.pack(); 
+        return p;
     }
 
     public class Selection implements ActionListener {
