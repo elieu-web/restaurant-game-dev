@@ -22,7 +22,7 @@ import javax.swing.JLayeredPane;
 
 public class Pizza {
     private static final int WIDTH = 500;
-    private static final int HEIGHT = 800;
+    private static final int HEIGHT = 600;
     private static JFrame f;
     // private static JFrame lf;
     private static JPanel p;
@@ -55,7 +55,7 @@ public class Pizza {
         // lp = new JLayeredPane();
         p = new JPanel();
         p.setLayout(null);
-        // picLabel.setBounds(75, 35, 300, 300);
+        picLabel.setBounds(75, 35, 300, 300);
         olives.setBounds(20, 350,100,100);
         tomato.setBounds(120, 350,100,100);
         pepper.setBounds(220, 350,100,100);
