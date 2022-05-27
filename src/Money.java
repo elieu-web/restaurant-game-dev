@@ -20,9 +20,9 @@ public class Money extends RestaurantGamePaint{
         db = db2;
     }
 
-    public Money () {
-        db = 0.00;
-    }
+    // public Money () {
+    //     db = 0.00;
+    // }
 
     public static JPanel makeOptionPanel(double cost) {
         JPanel p = new JPanel(new GridBagLayout());
@@ -36,9 +36,9 @@ public class Money extends RestaurantGamePaint{
         button2.setActionCommand("button2");
         JButton button3 = new JButton(Integer.toString(option3));
         button3.setActionCommand("button3");
-        button.addActionListener(new Money().new Selection());
-        button2.addActionListener(new Money().new Selection());
-        button3.addActionListener(new Money().new Selection());
+        button.addActionListener(new Selection());
+        button2.addActionListener(new Selection());
+        button3.addActionListener(new Selection());
 
         p.add(button);
         p.add(button2);
@@ -52,7 +52,7 @@ public class Money extends RestaurantGamePaint{
         JPanel p = new JPanel(new GridBagLayout());
         questionLabel = new JLabel("Welcome! Type how many pizzas: ");
         text = new JTextField("",2);
-        text.addKeyListener(new Money().new MyKeyListener());
+        text.addKeyListener(new MyKeyListener());
         p.add(questionLabel);
         p.add(text);
         p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -64,7 +64,7 @@ public class Money extends RestaurantGamePaint{
         JButton button = new JButton("NEXT");
         JButton b2 = new JButton("PREVIOUS");
         JButton b3 = new JButton("HOME");
-        b2.addActionListener(new Money().new QuestionPanel());
+        b2.addActionListener(new QuestionPanel());
         // b3.addActionListener(new HomePanel());
         p.add(b2);
         //button.addActionListener(new RestaurantGamePaint.PizzaPanel());
@@ -95,7 +95,7 @@ public class Money extends RestaurantGamePaint{
         return p;
     }
 
-    public class Selection implements ActionListener {
+    public static class Selection implements ActionListener {
         public void actionPerformed(ActionEvent e){
             // tryNumber += 1;
             // if (tryNumber == 1 && e.getActionCommand().equals("button3")) {
@@ -149,7 +149,7 @@ public class Money extends RestaurantGamePaint{
         }
     }
 
-    public class MyKeyListener implements KeyListener {
+    public static class MyKeyListener implements KeyListener {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode()== KeyEvent.VK_ENTER) {
                 String s = text.getText();
@@ -182,7 +182,7 @@ public class Money extends RestaurantGamePaint{
         }
     }
 
-    public class QuestionPanel implements ActionListener {
+    public static class QuestionPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "No questions found to go back to", "error", JOptionPane.ERROR_MESSAGE);
         }

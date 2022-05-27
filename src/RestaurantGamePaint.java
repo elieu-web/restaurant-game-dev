@@ -34,7 +34,6 @@ public class RestaurantGamePaint extends JFrame{
         panel2.add(button);
         panel2.add(button2);
         panel.add(panel2);
-        
         main.add(panel, "Home");
         main.add(Pizza.makePizza(), "Pizza");
         main.add(Money.chooseOptions(), "Money");
