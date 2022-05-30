@@ -22,10 +22,11 @@ import javax.swing.JLayeredPane;
 
 public class Pizza {
     private static final int WIDTH = 500;
-    private static final int HEIGHT = 600;
+    private static final int HEIGHT = 800;
     private static JFrame f;
     // private static JFrame lf;
-    private static JPanel p;
+    private static JLayeredPane lp;
+    // private static JPanel p;
     // private static boolean placeOl = false;
     // private static boolean placeTom = false;
     // private static boolean placeBP = false;
@@ -35,7 +36,7 @@ public class Pizza {
     private static JTextField text1 = new JTextField("Click on the triangle topping to place on the pizza! ");
     private static JTextField text2 = new JTextField("Click on the green topping to place on the pizza! ");
     private static JTextField text3 = new JTextField("Click on the yellow topping to place on the pizza! ");
-    private static JButton olives = new JButton(resizeImage("images/nobg_olives.png", 100, 100));
+    private static JButton olives = new JButton(resizeImage("images/olives.png", 100, 100));
     private static JButton tomato = new JButton(resizeImage("images/nobg_tomato.png", 100, 100));
     private static JButton pepper = new JButton(resizeImage("images/nobg_bp.png", 100, 100));
     private static JButton brocoli = new JButton(resizeImage("images/nobg_brocoli.png", 100, 100));
@@ -52,9 +53,9 @@ public class Pizza {
         JLabel picLabel = new JLabel(resizeImage("images/pizza.png", -100, 300));
         f = new JFrame("Start Making Pizza");
         // lf = new JFrame("Layered Frame");
-        // lp = new JLayeredPane();
-        p = new JPanel();
-        p.setLayout(null);
+        lp = new JLayeredPane();
+        // p = new JPanel();
+        lp.setLayout(null);
         picLabel.setBounds(75, 35, 300, 300);
         olives.setBounds(20, 350,100,100);
         tomato.setBounds(120, 350,100,100);
@@ -62,21 +63,21 @@ public class Pizza {
         brocoli.setBounds(320, 350,100,100);
         text.setBounds(60, 480, 330, 60);
         sound.setBounds(400, 500, 25, 25);
-        p.add(picLabel);
+        lp.add(picLabel, JLayeredPane.DEFAULT_LAYER);
         // p.add(pizza);
-        p.add(olives);
-        p.add(tomato);
-        p.add(pepper);
-        p.add(brocoli);
-        p.add(text);
-        p.add(sound);
+        lp.add(olives);
+        lp.add(tomato);
+        lp.add(pepper);
+        lp.add(brocoli);
+        lp.add(text);
+        lp.add(sound);
 
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-        p.setBackground(Color.WHITE);
+        lp.setBackground(Color.WHITE);
         f.setSize(200, 200);
         f.setVisible(true);
-		f.add(p);
-        p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		f.add(lp);
+        lp.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         f.pack(); 
         olives.addActionListener(new Pizza().new PlaceOlive());
         tomato.addActionListener(new Pizza().new PlaceTomato());
@@ -87,76 +88,165 @@ public class Pizza {
 
     public class PlaceOlive implements ActionListener {
         public void actionPerformed(ActionEvent e){
+        //first olive
         JLabel oliveLabel = new JLabel(resizeImage("images/nobg_olives.png", 50, 50));
         oliveLabel.setPreferredSize(new DimensionUIResource(50, 50));
-        oliveLabel.setBounds((int)(Math.random()*100+200),(int)(Math.random()*100+60), 50, 50);
-        // placeOl = true;
-        // if (placeOl) {
-        //     p.add(oliveLabel);
-        // }
-        // p.add(oliveLabel1, JLayeredPane.PALETTE_LAYER);
-        p.add(oliveLabel);
+        oliveLabel.setOpaque(true);
+        oliveLabel.setBackground(new Color(252, 211, 147, 255));
+        oliveLabel.setBounds(200, 160, 30, 30);
+        //(int)(Math.random()*100+200),(int)(Math.random()*100+60), 50, 50
+        //second olive
+        JLabel oliveLabel1 = new JLabel(resizeImage("images/nobg_olives.png", 50, 50));
+        oliveLabel1.setPreferredSize(new DimensionUIResource(50, 50));
+        oliveLabel1.setOpaque(true);
+        oliveLabel1.setBounds(280, 200, 30, 30);
+        oliveLabel1.setBackground(new Color(252, 211, 147, 255));
+        //third olive
         JLabel oliveLabel2 = new JLabel(resizeImage("images/nobg_olives.png", 50, 50));
         oliveLabel2.setPreferredSize(new DimensionUIResource(50, 50));
-        p.remove(text); // remove circle
+        oliveLabel2.setOpaque(true);
+        oliveLabel2.setBounds(140, 230, 30, 30);
+        oliveLabel2.setBackground(new Color(252, 211, 147, 255));
+        lp.add(oliveLabel, Integer.valueOf(1));
+        lp.add(oliveLabel1, Integer.valueOf(2));
+        lp.add(oliveLabel2, Integer.valueOf(3));
+        lp.remove(text); // remove circle
         text3.setBounds(60, 480, 330, 60);
-        p.add(text3); // add yellow
-        p.revalidate();
-        p.repaint();
+        lp.add(text3); // add yellow
+        lp.revalidate();
+        lp.repaint();
         }
     }
 
     public class PlaceTomato implements ActionListener {
         public void actionPerformed(ActionEvent e){
-            JLabel tomatoLabel = new JLabel(resizeImage("images/nobg_tomato.png", 50, 50));
+            //first tomato
+            JLabel tomatoLabel = new JLabel(resizeImage("images/nobg_tomato.png", 60, 60));
             tomatoLabel.setPreferredSize(new DimensionUIResource(50, 50));
-            tomatoLabel.setBounds((int)(Math.random()*100+200),(int)(Math.random()*100+100), 50, 50);
+            tomatoLabel.setBounds(180, 240, 60, 60);
+            tomatoLabel.setOpaque(true);
+            tomatoLabel.setBackground(new Color(252, 211, 147, 255));
+            // tomatoLabel.setBorderPainted(false);
+            // tomatoLabel.setContentAreaFilled(false);
+            //second tomato
+            JLabel tomatoLabel1 = new JLabel(resizeImage("images/nobg_tomato.png", 60, 60));
+            tomatoLabel1.setPreferredSize(new DimensionUIResource(50, 50));
+            tomatoLabel1.setBounds(100, 180, 40, 40);
+            tomatoLabel1.setBackground(new Color(252, 211, 147, 255));
+            tomatoLabel1.setOpaque(true);
+            //third tomato
+            JLabel tomatoLabel2 = new JLabel(resizeImage("images/nobg_tomato.png", 60, 60));
+            tomatoLabel2.setPreferredSize(new DimensionUIResource(50, 50));
+            tomatoLabel2.setBackground(new Color(252, 211, 147, 255));
+            tomatoLabel2.setBounds(260, 100, 40, 50);
+            tomatoLabel2.setOpaque(true);
+            //fourth tomato
+            JLabel tomatoLabel3 = new JLabel(resizeImage("images/nobg_tomato.png", 60, 60));
+            tomatoLabel3.setPreferredSize(new DimensionUIResource(50, 50));
+            tomatoLabel3.setBackground(new Color(252, 211, 147, 255));
+            tomatoLabel3.setBounds(285, 235, 40, 40);
+            tomatoLabel3.setOpaque(true);
+            //fifth tomato
+            JLabel tomatoLabel4 = new JLabel(resizeImage("images/nobg_tomato.png", 60, 60));
+            tomatoLabel4.setPreferredSize(new DimensionUIResource(50, 50));
+            tomatoLabel4.setBackground(new Color(252, 211, 147, 255));
+            tomatoLabel4.setBounds(230, 180, 40, 40);
+            tomatoLabel4.setOpaque(true);
             // placeTom = true;
             // if (placeTom){
             //     p.add(tomatoLabel);
             // }
-            p.add(tomatoLabel);
-            p.remove(text2); //remove triangle
+            lp.add(tomatoLabel, Integer.valueOf(4));
+            lp.add(tomatoLabel1, Integer.valueOf(5));
+            lp.add(tomatoLabel2, Integer.valueOf(6));
+            lp.add(tomatoLabel3, Integer.valueOf(7));
+            lp.add(tomatoLabel4, Integer.valueOf(8));
+            lp.remove(text2); //remove triangle
             text1.setBounds(60, 480, 330, 60);
-            p.add(text1); // add green
-            p.revalidate();
-            p.repaint();
+            lp.add(text1); // add green
+            lp.revalidate();
+            lp.repaint();
         }
     }
 
     public class PlaceBP implements ActionListener {
         public void actionPerformed(ActionEvent e){
+            //first BP
             JLabel BPLabel = new JLabel(resizeImage("images/nobg_bp.png", 50, 50));
             BPLabel.setPreferredSize(new DimensionUIResource(50, 50));
-            BPLabel.setBounds((int)(Math.random()*100+200),(int)(Math.random()*100+50), 50, 50);
+            BPLabel.setBounds(120, 100, 50, 50);
+            BPLabel.setOpaque(true);
+            BPLabel.setBackground(new Color(252, 211, 147, 255));
+            //second BP
+            JLabel BPLabel1 = new JLabel(resizeImage("images/nobg_bp.png", 50, 50));
+            BPLabel1.setPreferredSize(new DimensionUIResource(50, 50));
+            BPLabel1.setBounds(140, 180, 50, 50);
+            BPLabel1.setOpaque(true);
+            BPLabel1.setBackground(new Color(252, 211, 147, 255));
+            //third BP
+            JLabel BPLabel2 = new JLabel(resizeImage("images/nobg_bp.png", 50, 50));
+            BPLabel2.setPreferredSize(new DimensionUIResource(50, 50));
+            BPLabel2.setBounds(210, 80, 50, 50);
+            BPLabel2.setOpaque(true);
+            BPLabel2.setBackground(new Color(252, 211, 147, 255));
+             //fourth BP
+             JLabel BPLabel3 = new JLabel(resizeImage("images/nobg_bp.png", 50, 50));
+             BPLabel3.setPreferredSize(new DimensionUIResource(50, 50));
+             BPLabel3.setBounds(200, 210, 40, 50);
+             BPLabel3.setOpaque(true);
+             BPLabel3.setBackground(new Color(252, 211, 147, 255));
             // placeBP = true;
             // if (placeBP){
             //     p.add(BPLabel);
             // }
-            p.add(BPLabel);
-            p.remove(text3); // remove green
+            lp.add(BPLabel, Integer.valueOf(9));
+            lp.add(BPLabel1, Integer.valueOf(10));
+            lp.add(BPLabel2, Integer.valueOf(11));
+            lp.add(BPLabel3, Integer.valueOf(12));
+            lp.remove(text3); // remove green
             text2.setBounds(60, 480, 330, 60);
-            p.add(text2); // add yellow
-            p.revalidate();
-            p.repaint();
+            lp.add(text2); // add yellow
+            lp.revalidate();
+            lp.repaint();
         }
     }
 
     public class PlaceBrocoli implements ActionListener {
         public void actionPerformed(ActionEvent e){
-            JLabel brocoliLabel = new JLabel(resizeImage("images/nobg_brocoli.png", 50, 50));
+            //first brocoli
+            JLabel brocoliLabel = new JLabel(resizeImage("images/nobg_brocoli.png", 40, 40));
             brocoliLabel.setPreferredSize(new DimensionUIResource(50, 50));
-            brocoliLabel.setBounds((int)(Math.random()*100+200),(int)(Math.random()*100+40), 50, 50);
-            // placeBr = true;
-            // if (placeBr){
-            //     p.add(brocoliLabel);
-            // }
-            p.add(brocoliLabel);
-            p.remove(text2);
+            brocoliLabel.setBounds(187, 60, 40, 40);
+            brocoliLabel.setOpaque(true);
+            brocoliLabel.setBackground(new Color(252, 211, 147, 255));
+            //second brocoli
+            JLabel brocoliLabel1 = new JLabel(resizeImage("images/nobg_brocoli.png", 40, 40));
+            brocoliLabel1.setPreferredSize(new DimensionUIResource(50, 50));
+            brocoliLabel1.setBounds(165, 130, 40, 40);
+            brocoliLabel1.setOpaque(true);
+            brocoliLabel1.setBackground(new Color(252, 211, 147, 255));
+            //third brocoli
+            JLabel brocoliLabel2 = new JLabel(resizeImage("images/nobg_brocoli.png", 40, 40));
+            brocoliLabel2.setPreferredSize(new DimensionUIResource(50, 50));
+            brocoliLabel2.setBounds(280, 150, 40, 40);
+            brocoliLabel2.setOpaque(true);
+            brocoliLabel2.setBackground(new Color(252, 211, 147, 255));
+            //fourth brocoli
+            JLabel brocoliLabel3 = new JLabel(resizeImage("images/nobg_brocoli.png", 40, 40));
+            brocoliLabel3.setPreferredSize(new DimensionUIResource(50, 50));
+            // brocoliLabel3.setBounds(270, 160, 30, 30);
+            brocoliLabel3.setOpaque(true);
+            brocoliLabel3.setBounds(245, 245, 40, 40);
+            brocoliLabel3.setBackground(new Color(252, 211, 147, 255));
+            lp.add(brocoliLabel, Integer.valueOf(13));
+            lp.add(brocoliLabel1, Integer.valueOf(14));
+            lp.add(brocoliLabel2, Integer.valueOf(15));
+            lp.add(brocoliLabel3, Integer.valueOf(16));
+            lp.remove(text2);
             text1.setBounds(60, 480, 330, 60);
-            p.add(text1);
-            p.revalidate();
-            p.repaint();
+            lp.add(text1);
+            lp.revalidate();
+            lp.repaint();
         }
     }
 
@@ -165,6 +255,7 @@ public class Pizza {
             // TextSpeech method
         }
     }
+        
 
     // public static JButton createButton(String imagePath){
     //     JButton button = new JButton(resizeImage(imagePath, 100, 100));
@@ -173,43 +264,4 @@ public class Pizza {
     //     return button;
     // }
 
-    //makePizza method
-     
-        // JButton jButton1 = new JButton("Open");
-        // jButton1.setIcon(resizeImage("images/yellow_bellpepper.jpeg", 100, 100));
-        // jButton1.setBackground(Color.green);
-        // jButton1.setBounds(175, 50, 150, 100);
-        // // lp.add(jButton1, JLayeredPane.DEFAULT_LAYER);
-
-        // JButton jButton2 = new JButton("Open");
-        // JButton jButton3 = new JButton("Close");
-        // jButton2.setVisible(false);
-        // jButton3.setVisible(false);
-        // jButton2.setBackground(Color.RED);
-        // jButton3.setBackground(Color.RED);
-        // jButton2.setBounds(75, 125, 150, 100);
-        // jButton3.setBounds(275, 125, 150, 100);
-        // lp.add(jButton2, JLayeredPane.PALETTE_LAYER);
-        // lp.add(jButton3, JLayeredPane.PALETTE_LAYER);
-        // lp.add(picLabel, JLayeredPane.DEFAULT_LAYER);
-        // lp.add(olives, JLayeredPane.POPUP_LAYER);
-        // lp.add(tomato, JLayeredPane.POPUP_LAYER);
-        // lp.add(pepper, JLayeredPane.POPUP_LAYER);
-        // lp.add(brocolli, JLayeredPane.POPUP_LAYER);
-        // lp.add(text);
-        // lf.setVisible(true);
-        // lf.add(lp);
-        // // lp.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        // lf.pack(); 
-        // lf.setVisible(true);
-        // jButton1.addActionListener(e -> {
-        //     jButton2.setVisible(true);
-        //     jButton3.setVisible(true);
-        // });
-
-        // f.setLocationRelativeTo(null);
-        // olives.setVisible(true);
-        // tomato.setVisible(true);
-        // pepper.setVisible(true);
-        // brocolli.setVisible(true);
 }
