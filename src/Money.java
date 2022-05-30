@@ -1,10 +1,9 @@
 package src;
-import java.util.*;
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
-
 import java.awt.GridBagLayout;
 
 
@@ -12,16 +11,13 @@ public class Money extends RestaurantGamePaint {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 600;
     private static JFrame frame = new JFrame();
-    private static JTextField text;
+    //private static JTextField text;
     private static JLabel questionLabel;
     private static JPanel activePanel;
-    private double db;
+    // private double db;
 
     private static double cost = (int)((Math.random() * 900) + 100) / 100.0; 
 
-    public Money (double db2) {
-        db = db2;
-    }
 
     // public Money () {
     //     db = 0.00;
@@ -34,9 +30,13 @@ public class Money extends RestaurantGamePaint {
         int option2 = (int)cost - (int) (Math.random() * 5);
         int option3 = ((int)cost) + 1 ; //fix
 
-        questionLabel = new JLabel("Dollar up the price of " + cost);
+        if (option3 == option1) {
+            option1 = (int)cost + (int) (Math.random() * 6);
+        }
+
+        questionLabel = new JLabel("Dollar up the price of $" + cost);
         p.add(questionLabel); 
-        p.set(questionLabel).
+        //p.set(questionLabel);
 
 
         JButton button = new JButton(Integer.toString(option1));
@@ -61,7 +61,6 @@ public class Money extends RestaurantGamePaint {
     private static JPanel makeIntroPanel() {
         JPanel p = new JPanel(new GridBagLayout());
         //questionLabel = new JLabel("Welcome! Type how many pizzas: ");
-        //questionLabel = new JLabel("Welcome! This is your number: " + (double) (Math.random()*100) );
         //JLabel label = new JLabel("Welcome! This is your number: " + (int) ((Math.random() * 900) + 100) / 100.0);
         JLabel label = new JLabel("Welcome! This is your number: " + cost);
         p.add(label);
@@ -80,22 +79,21 @@ public class Money extends RestaurantGamePaint {
         return p;
     }
 
-    private static JPanel makeButtons() {
-        JPanel p = new JPanel(new GridBagLayout());
-        JButton button = new JButton("NEXT");
-        JButton b2 = new JButton("PREVIOUS");
-        JButton b3 = new JButton("HOME");
-        b2.addActionListener(new Money().new QuestionPanel());
-        // b3.addActionListener(new HomePanel());
-        p.add(b2);
+    // private static JPanel makeButtons() {
+    //     JPanel p = new JPanel(new GridBagLayout());
+    //     JButton button = new JButton("NEXT");
+    //     JButton b2 = new JButton("PREVIOUS");
+    //     JButton b3 = new JButton("HOME");
+    //     b2.addActionListener(new Money().new QuestionPanel());
+    //     // b3.addActionListener(new HomePanel());
+    //     p.add(b2);
          
-        p.add(b3);
-        p.add(button);
+    //     p.add(b3);
+    //     p.add(button);
 
-        return p;
-    }
+    //     return p;
+    // }
 
-    //deleted by yash 
     public static Component chooseOptions() {
         JPanel p = new JPanel(); 
         activePanel = makeIntroPanel();
@@ -161,7 +159,7 @@ public class Money extends RestaurantGamePaint {
         
             if (e.getActionCommand().equals("button3")) {
                 JPanel winPanel = new JPanel(new GridBagLayout());
-                ImageIcon winMeme = Pizza.resizeImage("images/WinMeme.png", 200, 300);
+                ImageIcon winMeme = Pizza.resizeImage("images/WinMeme.png", 190, 190);
                 JLabel winLabel = new JLabel(winMeme);
                 // points -= 200;
                 // JFrame newFrame = new JFrame("Money Game");
@@ -180,9 +178,6 @@ public class Money extends RestaurantGamePaint {
                 //add
             }
 
-
-          
-            
 
 
         }
@@ -229,36 +224,6 @@ public class Money extends RestaurantGamePaint {
         }
     }
 
-  
-
-   
-
-    // public class ClickDollar implements ActionListener {
-    //     public void actionPerformed(ActionEvent e){
-    //         JLabel oneDollar = new JLabel(resizeImage("images/one-dollar.png", 50, 50));
-    //         oneDollar.setPreferredSize(new DimensionUIResource(50, 50));
-           
-    //         //  Setting location
-    //         oneDollar.setLocation(100, 100);
-    //         oneDollar.setLocation(150, 200);
-    //         p.add(oneDollar);
-    //         p.revalidate();
-    //         p.repaint();
-    //     }
-    // }
-
-    // public class ClickTen impelements ActionListener {
-    //     public void actionPerformed(ActionEvent e){
-    //         JLabel tenDollar = new JLabel(resizeImage("images/ten-dollar.png", 50, 50));
-    //         tenDollar.setPreferredSize(new DimensionUIResource(50, 50));
-    //         //  Setting location
-    //         tomatoLabel1.setLocation(100, 100);
-    //         tomatoLabel2.setLocation(150, 200);
-    //         p.add(tenDollar);
-    //         p.revalidate();
-    //         p.repaint();
-    //     }
-    // }
 
     
 }
