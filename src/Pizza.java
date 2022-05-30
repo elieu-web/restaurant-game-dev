@@ -49,7 +49,7 @@ public class Pizza {
         return new ImageIcon(resizedImg);
     } 
 
-    public static void makePizza() {
+    public static JComponent makePizza() {
         JLabel picLabel = new JLabel(resizeImage("images/pizza.png", -100, 300));
         f = new JFrame("Start Making Pizza");
         // lf = new JFrame("Layered Frame");
@@ -84,6 +84,7 @@ public class Pizza {
         pepper.addActionListener(new Pizza().new PlaceBP());
         brocoli.addActionListener(new Pizza().new PlaceBrocoli());
         sound.addActionListener(new Pizza().new textSound());
+	return lp;
     }
 
     public class PlaceOlive implements ActionListener {
