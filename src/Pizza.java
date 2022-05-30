@@ -1,6 +1,6 @@
 package src;
 import java.awt.Color;
-// import java.awt.Component;
+import java.awt.Component;
 import java.awt.Dimension;
 // import java.util.*;
 import javax.swing.JButton;
@@ -49,13 +49,9 @@ public class Pizza {
         return new ImageIcon(resizedImg);
     } 
 
-    public static JComponent makePizza() {
+    public static Component makePizza() {
         JLabel picLabel = new JLabel(resizeImage("images/pizza.png", -100, 300));
-        f = new JFrame("Start Making Pizza");
-        // lf = new JFrame("Layered Frame");
         lp = new JLayeredPane();
-        // p = new JPanel();
-        lp.setLayout(null);
         picLabel.setBounds(75, 35, 300, 300);
         olives.setBounds(20, 350,100,100);
         tomato.setBounds(120, 350,100,100);
@@ -64,21 +60,12 @@ public class Pizza {
         text.setBounds(60, 480, 330, 60);
         sound.setBounds(400, 500, 25, 25);
         lp.add(picLabel, JLayeredPane.DEFAULT_LAYER);
-        // p.add(pizza);
         lp.add(olives);
         lp.add(tomato);
         lp.add(pepper);
         lp.add(brocoli);
         lp.add(text);
         lp.add(sound);
-
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-        lp.setBackground(Color.WHITE);
-        f.setSize(200, 200);
-        f.setVisible(true);
-		f.add(lp);
-        lp.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        f.pack(); 
         olives.addActionListener(new Pizza().new PlaceOlive());
         tomato.addActionListener(new Pizza().new PlaceTomato());
         pepper.addActionListener(new Pizza().new PlaceBP());
