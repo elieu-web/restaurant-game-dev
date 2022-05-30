@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.plaf.*;
 
 public class RestaurantGamePaint extends JFrame{
+    private static final int WIDTH = 500;
+    private static final int HEIGHT = 600;
     private Font font = new Font("Helvetica", Font.PLAIN, 30);
     protected static JFrame frame = new JFrame("Restaurant Game");
     protected static JPanel panel = new JPanel();
@@ -38,6 +40,7 @@ public class RestaurantGamePaint extends JFrame{
         main.add(Pizza.makePizza(), "Pizza");
         main.add(Money.chooseOptions(), "Money");
         cl.first(main);
+        this.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
     }
 
     class PizzaPanel implements ActionListener {
