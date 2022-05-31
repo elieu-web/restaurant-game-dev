@@ -6,7 +6,7 @@ import javax.swing.plaf.*;
 
 public class RestaurantGamePaint extends JFrame{
     protected static final int WIDTH = 500;
-    protected static final int HEIGHT = 600;
+    protected static final int HEIGHT = 800;
     public static Font font = new Font("Helvetica", Font.PLAIN, 30);
     protected static JFrame frame = new JFrame("Restaurant Game");
     protected static JPanel panel = new JPanel();
@@ -44,7 +44,7 @@ public class RestaurantGamePaint extends JFrame{
         this.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
     }
 
-    public static JPanel makeHomePanel() {
+    public static JPanel makeMoneyHomePanel() {
             JButton b1 = new JButton("<--");
             JButton b2 = new JButton("HOME");
             JButton b3 = new JButton("-->");
@@ -54,6 +54,14 @@ public class RestaurantGamePaint extends JFrame{
                     cl.first(main);
                 }
             });
+            b3.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int i = 1;
+                    main.add(Money.makeOptionsPanel(), "MONEY CHOICE " + i);
+                    cl.show(main,"MONEY CHOICE " + i);
+                }
+            });
             JPanel p = new JPanel();
             GridLayout gl2 = new GridLayout(1,3);
             p.setLayout(gl2);
@@ -61,6 +69,19 @@ public class RestaurantGamePaint extends JFrame{
             p.add(b2);
             p.add(b3);
             return p;
+    }
+
+    public static JPanel makePizzaHomePanel() {
+        JButton b3 = new JButton("HOME");
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cl.first(main);
+            }
+        });
+        JPanel p = new JPanel();
+        p.add(b3);
+        return p;
     }
 
     class PizzaPanel implements ActionListener {

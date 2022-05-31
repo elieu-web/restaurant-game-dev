@@ -11,9 +11,10 @@ import javax.swing.text.StyledDocument;
 public class Money  {
     private static JLabel questionLabel;
     private static JPanel activePanel;
-    private static double cost = (int)((Math.random() * 900) + 100) / 100.0; 
+    private static double cost;  
 
     public static Component makeOptionsPanel() {
+        cost = (int)((Math.random() * 900) + 100) / 100.0;
         GridLayout gl = new GridLayout(4,1);
         GridLayout gl2 = new GridLayout(1,3);
         JPanel p = new JPanel();
@@ -45,7 +46,7 @@ public class Money  {
         p.add(button2);
         p.add(button3);
         activePanel.add(p);
-        activePanel.add(RestaurantGamePaint.makeHomePanel());
+        activePanel.add(RestaurantGamePaint.makeMoneyHomePanel());
         return activePanel;
     }
 
@@ -76,7 +77,7 @@ public class Money  {
         GridLayout gl = new GridLayout(3,0);
         activePanel = makeIntroPanel();
         activePanel.setLayout(gl);
-        activePanel.add(RestaurantGamePaint.makeHomePanel());
+        activePanel.add(RestaurantGamePaint.makeMoneyHomePanel());
         return activePanel;
     }
 
