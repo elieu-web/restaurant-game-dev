@@ -72,6 +72,21 @@ public class Money  {
         p.add(button);
         return p;
     }
+    
+    // private static JPanel makeButtons() {
+    //     JPanel p = new JPanel(new GridBagLayout());
+    //     JButton button = new JButton("NEXT");
+    //     JButton b2 = new JButton("PREVIOUS");
+    //     JButton b3 = new JButton("HOME");
+    //     b2.addActionListener(new Money().new QuestionPanel());
+    //     // b3.addActionListener(new HomePanel());
+    //     p.add(b2);
+         
+    //     p.add(b3);
+    //     p.add(button);
+
+    //     return p;
+    // }
 
     public static Component chooseOptions() {
         GridLayout gl = new GridLayout(3,0);
