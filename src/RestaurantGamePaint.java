@@ -5,13 +5,13 @@ import javax.swing.*;
 import javax.swing.plaf.*;
 
 public class RestaurantGamePaint extends JFrame{
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 600;
-    private Font font = new Font("Helvetica", Font.PLAIN, 30);
+    protected static final int WIDTH = 500;
+    protected static final int HEIGHT = 600;
+    public static Font font = new Font("Helvetica", Font.PLAIN, 30);
     protected static JFrame frame = new JFrame("Restaurant Game");
     protected static JPanel panel = new JPanel();
-    protected static Container main;
-    private CardLayout cl;
+    public static Container main;
+    public static CardLayout cl;
     private JPanel panel2 = new JPanel();
     // private JTextField text;
     private JLabel label;
@@ -39,17 +39,32 @@ public class RestaurantGamePaint extends JFrame{
         main.add(panel, "Home");
         main.add(Pizza.makePizza(), "Pizza");
         main.add(Money.chooseOptions(), "Money");
+        main.add(Money.makeOptionsPanel(), "MONEY CHOICE");
         cl.first(main);
         this.setPreferredSize(new DimensionUIResource(WIDTH, HEIGHT));
     }
 
+    public static JPanel makeHomePanel() {
+            JButton b1 = new JButton("<--");
+            JButton b2 = new JButton("HOME");
+            JButton b3 = new JButton("-->");
+            b2.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    cl.first(main);
+                }
+            });
+            JPanel p = new JPanel();
+            GridLayout gl2 = new GridLayout(1,3);
+            p.setLayout(gl2);
+            p.add(b1);
+            p.add(b2);
+            p.add(b3);
+            return p;
+    }
+
     class PizzaPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // panel.removeAll();
-            // //panel2.removeAll();      
-            // Pizza.makePizza();
-            // panel.revalidate();
-            // panel.repaint();
             cl.show(main,"Pizza");
         }
     }
@@ -57,8 +72,6 @@ public class RestaurantGamePaint extends JFrame{
     class MoneyPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         cl.show(main,"Money");
-        // Money.chooseOptions();
-    }  
-}
-
+        }  
+    }
 }

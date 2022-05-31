@@ -1,6 +1,5 @@
 package src;
 import javax.swing.*;
-import javax.swing.plaf.*;
 
 public class RestaurantGame{
     
@@ -19,8 +18,8 @@ public class RestaurantGame{
         rgp.pack();
         rgp.setLocationRelativeTo(null);
      }
-
-    }  
+    } 
+    
 
     // public class HomePanel implements ActionListener {
     //         public void actionPerformed(ActionEvent e) {

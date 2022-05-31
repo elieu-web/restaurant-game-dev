@@ -1,29 +1,12 @@
 package src;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 // import java.util.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-// import java.awt.Graphics;
-import java.awt.event.*;   
 import javax.swing.*;
-// import javax.swing.event.*;
+import java.awt.event.*;   
 import javax.swing.plaf.DimensionUIResource;
-import java.awt.Image;
-// import java.awt.image.BufferedImage;
-// import javax.imageio.ImageIO;
-// import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JLayeredPane;  
-// import java.util.*;    
    
 
 public class Pizza {
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 800;
-    private static JFrame f;
     // private static JFrame lf;
     private static JLayeredPane lp;
     // private static JPanel p;
@@ -52,6 +35,8 @@ public class Pizza {
     public static Component makePizza() {
         JLabel picLabel = new JLabel(resizeImage("images/pizza.png", -100, 300));
         lp = new JLayeredPane();
+        JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
         picLabel.setBounds(75, 35, 300, 300);
         olives.setBounds(20, 350,100,100);
         tomato.setBounds(120, 350,100,100);
@@ -71,7 +56,9 @@ public class Pizza {
         pepper.addActionListener(new Pizza().new PlaceBP());
         brocoli.addActionListener(new Pizza().new PlaceBrocoli());
         sound.addActionListener(new Pizza().new textSound());
-	return lp;
+        p.add(lp);
+        p.add(RestaurantGamePaint.makeHomePanel(),BorderLayout.SOUTH);
+	    return p;
     }
 
     public class PlaceOlive implements ActionListener {
