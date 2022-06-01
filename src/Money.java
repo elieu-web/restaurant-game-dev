@@ -122,5 +122,32 @@ public class Money  {
                 JOptionPane.showMessageDialog(null, "So close! Try again!", "Wrong Answer", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }    
+    }  
+    
+    private static JPanel makeMoneyPanel() {
+    //     JPanel p = new JPanel(new GridBagLayout());
+       
+    //     JLabel label = new JLabel("Choose the dollar types to make up " + cost);
+    //     JButton tenDollar = new JButton(resizeImage("images/ten-dollar.png", 100, 100));
+
+    //     tenDollar.addActionListener(new Money().new QuestionPanel());
+
+
+    //     //text = new JTextField("",2);
+    //     text.addKeyListener(new Money().new MyKeyListener());
+    //     p.add(label);
+    //     //p.add(text);
+    //     p.add(tenDollar); 
+
+    //     p.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+    //     return p;
+    // }
+
+
+    // private static void swapPanels(JPanel newPanel) {
+    //     f.getContentPane().removeAll(); //remove all panels on frame instead of components on panel such as jlabel 
+    //     f.add(newPanel);
+    //     f.validate();
+    //     f.repaint();
+    // }
 }
